@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 55px 40px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+  color: #00ffd5;
+}
+
+.tagline {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 25px;
+}
+
+.coming {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.divider {
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(to right, #00ffd5, #00b3ff);
+  margin: 20px auto 25px;
+  border-radius: 20px;
+}
+
+.notify-text {
+  font-size: 15px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.notify-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.notify-form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.notify-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #00ffd5, #00b3ff);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.notify-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 255, 213, 0.4);
+}
+
+.footer {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
