@@ -70,8 +70,18 @@ body {
   color: #4a5672;
   margin: 0 auto 40px;
 }
+.instagram-icon {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;              /* ✅ critical */
+  transition: opacity 0.2s ease;
+}
 
-/* GitHub icon */
+.instagram-link:hover .instagram-icon {
+  opacity: 0.75;
+}
+/* GitHub icon 
 .github-link {
   display: inline-flex;
   align-items: center;
@@ -88,7 +98,7 @@ body {
   height: 22px;
   fill: #283754;
 }
-
+*/
 .btn{
   padding: 0.65rem 1.6rem;
   border-radius: 999px;
