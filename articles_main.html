@@ -142,10 +142,18 @@
       <div class="newsletter-inner">
         <h2>Sign up to our newsletter</h2>
         <p>Insightful writing on technology, innovation, and the future — delivered to your inbox.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Your email address" required />
-          <button type="submit">Subscribe</button>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            placeholder="Your email address"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" id="newsletter-submit">Subscribe</button>
         </form>
+        <p class="newsletter-feedback" id="newsletter-feedback" aria-live="polite"></p>
         <!--
         <label class="newsletter-option">
           <input type="radio" name="freq" checked /> Weekly
@@ -176,6 +184,58 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      const form = document.getElementById("newsletter-form");
+      const emailInput = document.getElementById("newsletter-email");
+      const submitButton = document.getElementById("newsletter-submit");
+      const feedback = document.getElementById("newsletter-feedback");
+      const storageKey = "velvetrix-newsletter-subscribers";
+
+      if (!form || !emailInput || !submitButton || !feedback) {
+        return;
+      }
+
+      const setFeedback = (message, type) => {
+        feedback.textContent = message;
+        feedback.classList.remove("is-success", "is-error");
+        if (type) {
+          feedback.classList.add(type);
+        }
+      };
+
+      const isValidEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      };
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const email = emailInput.value.trim().toLowerCase();
+
+        if (!isValidEmail(email)) {
+          setFeedback("Please enter a valid email address.", "is-error");
+          emailInput.focus();
+          return;
+        }
+
+        const existing = JSON.parse(localStorage.getItem(storageKey) || "[]");
+
+        if (existing.includes(email)) {
+          setFeedback("You're already subscribed with this email.", "is-error");
+          return;
+        }
+
+        localStorage.setItem(storageKey, JSON.stringify([...existing, email]));
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Subscribed";
+        setFeedback("Thanks for subscribing! We'll keep you posted.", "is-success");
+        form.reset();
+      });
+    })();
+  </script>
+
 </body>
 </html>
 
